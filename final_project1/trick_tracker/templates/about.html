@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Trick Tracker</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <h1>Trick Tracker</h1>
+
+    <nav>
+        <a href="{% url 'sign_in' %}">Sign In</a>
+        <a href="{% url 'checkboxes' %}">Trick Tracker</a>
+    </nav>
+
+    <div class="about-content">
+        <p>
+            Trick Tracker is an application created for a school project, with a long-term plan in mind. There are plenty of additions and changes planned for the future, making it an exciting project.
+        </p>
+        <p>
+            If you have any ideas or criticisms, feel free to send a message on Instagram to <a href="https://www.instagram.com/sil8t/" target="_blank">@sil8t</a>.
+        </p>
+
+        <p>
+            - Carter Schulz, Creator
+        </p>
+    </div>
+
+</body>
+
+</html>

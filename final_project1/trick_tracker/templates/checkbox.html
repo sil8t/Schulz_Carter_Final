@@ -1,0 +1,43 @@
+{% load custom_filters %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trick Tracker - Track Your Tricks</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <h1>Trick Tracker</h1>
+
+    <nav>
+        <a href="{% url 'sign_in' %}">Sign In</a>
+        <a href="{% url 'about' %}">Contact</a>
+    </nav>
+
+    <form method="post" action="{% url 'checkboxes' %}">
+        {% csrf_token %}
+        {% for trick in tricks %}
+            <div class="form-check">
+                <label for="trick_{{ trick.id }}">{{ trick.name }}</label>
+                <select name="trick_{{ trick.id }}">
+                    <option value="Not_Landed" {% if 'Not_Landed' in user_progress|get_key:trick.id %}selected{% endif %}>Not Landed</option>
+                    <option value="Landed_Sketchy" {% if 'Landed_Sketchy' in user_progress|get_key:trick.id %}selected{% endif %}>Landed Sketchy</option>
+                    <option value="Landed_Clean" {% if 'Landed_Clean' in user_progress|get_key:trick.id %}selected{% endif %}>Landed Clean</option>
+                    <option value="On_Lock" {% if 'On_Lock' in user_progress|get_key:trick.id %}selected{% endif %}>On Lock</option>
+                </select>
+            </div>
+        {% endfor %}
+        <div class="form-submit">
+            <button type="submit">Update</button>
+        </div>
+    </form>
+
+</body>
+
+</html>

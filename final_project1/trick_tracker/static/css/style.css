@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+nav {
+    text-align: center;
+    margin-top: 20px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.form-check {
+    display: inline-block;
+    width: 23%;
+    margin: 1%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+
+form {
+    text-align: center;
+}
+
+.form-submit {
+    clear: both;
+    text-align: center;
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 10px;
+}
