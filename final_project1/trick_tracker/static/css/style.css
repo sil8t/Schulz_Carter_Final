@@ -1,49 +1,192 @@
-body {
+/* General Resets */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    margin: 20px;
 }
 
-h1 {
-    text-align: center;
+body {
+    background-color: #f4f4f4;
     color: #333;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
+/* Page Container */
+.page-container {
+    display: flex;
+    min-height: 100vh; /* Full height of the viewport */
+}
+
+
+/* Enhanced About Page Styles */
+.about-content {
+    padding: 40px; /* Increased padding for better spacing */
+    max-width: 800px; /* Restrict max width for better readability */
+    margin: 2em auto; /* Center the content and add vertical spacing */
+    background-color: #ffffff; /* Maintain a white background */
+    border-radius: 10px; /* Soften the corners */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    color: #333; /* Dark gray for better readability */
+    line-height: 1.8; /* Increase line height for readability */
+}
+
+.about-content h2 {
+    color: #007bff; /* A blue tone for headings for better visual hierarchy */
+    margin-bottom: 1em; /* Spacing after headings */
+}
+
+.about-content p {
+    text-align: justify; /* Justify paragraphs for a cleaner look */
+    margin-bottom: 1em; /* Spacing between paragraphs */
+    font-size: 1.1rem; /* Slightly larger font size for readability */
+}
+
+.about-content a {
+    color: #007bff; /* Blue tone for links */
+    text-decoration: underline; /* Underline for clarity */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.about-content a:hover {
+    color: #0056b3; /* Darker blue on hover for interaction feedback */
+}
+
+.about-content ul {
+    list-style-type: circle; /* Use circles for bullet points */
+    margin: 20px 0; /* Vertical spacing around list */
+    padding-left: 20px; /* Indent list items */
+}
+
+.about-content li {
+    margin-bottom: 10px; /* Spacing between list items */
+}
+
+/* Optional: Animation for link hover */
+.about-content a:hover {
+    text-decoration: none; /* Remove underline on hover */
+    padding-bottom: 2px; /* Add an underline effect */
+    box-shadow: 0 1px 0 0 currentColor; /* Use box-shadow for underline to avoid shifting text */
+}
+
+
+
+
+
+/* Navigation Bar */
 nav {
-    text-align: center;
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1em;
+    background: #fff;
+    width: 250px; /* Adjust width as needed */
+    height: 100vh;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
+}
+
+/* Main Title in Nav */
+nav h1 {
+    margin-bottom: 1em; /* Adjust spacing below the title */
+    text-align: left; /* Align title to the left */
 }
 
 nav a {
-    margin: 0 15px;
     text-decoration: none;
-    color: #007BFF;
+    color: #333;
+    padding: 0.5em 1em;
+    display: block;
 }
 
-.form-container {
-    max-width: 800px;
-    margin: auto;
+nav a.active {
+    font-weight: bold;
+    background-color: #dcdcdc;
+    border-radius: 8px;
 }
 
+nav a:hover {
+    background-color: #eaeaea;
+    border-radius: 8px;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1; /* Takes up the remaining space */
+    padding: 20px; /* Adjust as needed */
+}
+
+/* Trick Tracker Grid */
 .form-check {
-    display: inline-block;
-    width: 23%;
-    margin: 1%;
-    box-sizing: border-box;
-    padding: 10px;
-    border: 1px solid #000000;
-    border-radius: 5px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Form Styling */
 form {
-    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 2em;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd; /* Adds a light border, adjust color as needed */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #ffffff; /* Ensures the background is white */
+    appearance: none; /* Standard property for removing default styling */
+    cursor: pointer; /* Changes cursor to pointer to indicate it's selectable */
 }
 
 .form-submit {
-    clear: both;
-    text-align: center;
-    margin-top: 10px;
+    padding-right:2em;
+    text-align: right;
 }
 
-button {
-    margin-top: 10px;
+.form-submit button {
+    padding: 10px 20px;
+    border: none;
+    background: #4a69bd; /* Updated color: a stylish blue */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    border-radius: 8px;
+    margin-top: 6em;
+}
+
+.form-submit button:hover {
+    background: #3b5283; /* Darker shade of blue on hover */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .page-container {
+        flex-direction: column;
+    }
+
+    nav {
+        width: 100%; /* Nav becomes full width */
+        height: auto;
+    }
+
+    .main-content {
+        padding: 1em;
+    }
+
+    .form-submit {
+        grid-column: span 1; /* Ensure button adjusts for mobile layout */
+    }
 }

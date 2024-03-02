@@ -12,22 +12,22 @@
 
 <body>
 
-    <h1>Trick Tracker</h1>
+    <div class="page-container"> <!-- This wraps the entire page content -->
+        <nav>
+            <h1>Trick Tracker</h1> <!-- Title at the top of the nav -->
+            <a href="{% url 'home' %}" class="nav-item active">About</a>
+            <a href="{% url 'about' %}" class="nav-item">Contact</a>
+            <a href="{% url 'checkboxes' %}" class="nav-item">Trick Tracker</a>
+            <a href="{% url 'sign_in' %}" class="nav-item">Log out</a>
+        </nav>
 
-    <nav>
-        <a href="{% url 'sign_in' %}">Sign In</a>
-    </nav>
-
-    <div class="home-content">
-        <p>
-            Welcome to Trick Tracker, a tool designed for skateboarders to track their progress learning tricks.
-        </p>
-        <p>
-            Whether you're a beginner or an experienced skater, Trick Tracker helps you keep a record of the tricks you've mastered and those you're still working on.
-        </p>
-        <p>
-            <a href="{% url 'sign_in' %}">Sign in</a> to get started on your skateboarding journey!
-        </p>
+        <div class="main-content"> <!-- This wraps the main content of the page -->
+            <div class="about-content">
+                <p>Welcome to Trick Tracker, a tool designed for skateboarders to track their progress learning tricks.</p>
+                <p>Whether you're a beginner or an experienced skater, Trick Tracker helps you keep a record of the tricks you've mastered and those you're still working on.</p>
+                <p><a href="{% url 'sign_in' %}">Sign in</a> to get started on your skateboarding journey!</p>
+            </div>
+        </div>
     </div>
 
 </body>

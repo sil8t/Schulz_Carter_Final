@@ -12,19 +12,24 @@
 
 <body>
 
-    <h1>Trick Tracker</h1>
+    <div class="page-container"> <!-- Wraps the entire page content -->
+        <nav>
+            <h1>Trick Tracker</h1> <!-- Title at the top of the nav -->
+            <a href="{% url 'home' %}" class="nav-item">About</a>
+            <a href="{% url 'about' %}" class="nav-item">Contact</a>
+            <a href="{% url 'checkboxes' %}" class="nav-item">Trick Tracker</a>
+            <a href="{% url 'sign_in' %}" class="nav-item active">Log out</a>
+        </nav>
 
-    <nav>
-        <a href="{% url 'sign_in' %}">Sign In</a>
-        <a href="{% url 'home' %}">Home</a>
-    </nav>
-
-    <div class="main-content">
-        <form method="post" action="{% url 'sign_in' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Sign In</button>
-        </form>
+        <div class="main-content"> <!-- Wraps the main content of the page -->
+            <div class="about-content"> <!-- Use for form styling -->
+                <form method="post" action="{% url 'sign_in' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Sign In</button>
+                </form>
+            </div>
+        </div>
     </div>
 
 </body>
