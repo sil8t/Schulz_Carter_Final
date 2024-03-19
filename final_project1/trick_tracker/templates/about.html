@@ -14,11 +14,12 @@
 
     <div class="page-container"> <!-- This wraps the entire page content -->
         <nav>
-            <h1>Trick Tracker</h1> <!-- Title at the top of the nav -->
-            <a href="{% url 'home' %}" class="nav-item">About</a>
-            <a href="{% url 'about' %}" class="nav-item active">Contact</a>
+            <h1>Trick Tracker</h1>
+            <a href="{% url 'home' %}" class="nav-item">Home</a>
+            <a href="{% url 'about' %}" class="nav-item active">About</a>
             <a href="{% url 'checkboxes' %}" class="nav-item">Trick Tracker</a>
-            <a href="{% url 'sign_in' %}" class="nav-item">Log out</a>
+            <a href="{% url 'update_profile' %}" class="nav-item">Account</a>
+            <a href="{% url 'logout' %}" class="nav-item">Log out</a>
         </nav>
 
         <div class="main-content"> <!-- This wraps the main content of the page -->

@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trick Tracker - Update Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="page-container">
+        <nav>
+            <h1>Trick Tracker</h1>
+            <a href="{% url 'home' %}" class="nav-item">Home</a>
+            <a href="{% url 'about' %}" class="nav-item">About</a>
+            <a href="{% url 'checkboxes' %}" class="nav-item">Trick Tracker</a>
+            <a href="{% url 'update_profile' %}" class="nav-item active">Account</a>
+            <a href="{% url 'logout' %}" class="nav-item">Log out</a>
+        </nav>
+
+        <div class="main-content">
+            <h2>Update Profile</h2>
+            <form method="post" action="{% url 'update_profile' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-submit">
+                    <button type="submit">Update Profile</button>
+                </div>
+            </form>
+            <p>
+                <a href="{% url 'change_password' %}">Change your password here</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>

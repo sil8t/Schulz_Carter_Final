@@ -1,48 +1,72 @@
-{% load custom_filters %}
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trick Tracker - Track Your Tricks</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/script.js' %}" defer></script>
 </head>
-
 <body>
-
-    <div class="page-container"> <!-- Wrapper for sidebar nav and main content -->
+    <div class="page-container">
         <nav>
-            <h1>Trick Tracker</h1> <!-- Title moved inside nav for the sidebar layout -->
-            <a href="{% url 'home' %}" class="nav-item">About</a>
-            <a href="{% url 'about' %}" class="nav-item">Contact</a>
+            <h1>Trick Tracker</h1>
+            <a href="{% url 'home' %}" class="nav-item">Home</a>
+            <a href="{% url 'about' %}" class="nav-item">About</a>
             <a href="{% url 'checkboxes' %}" class="nav-item active">Trick Tracker</a>
-            <a href="{% url 'sign_in' %}" class="nav-item">Log out</a>
+            <a href="{% url 'update_profile' %}" class="nav-item">Account</a>
+            <a href="{% url 'logout' %}" class="nav-item">Log out</a>
         </nav>
 
-        <div class="main-content"> <!-- Main content wrapper -->
+        <div class="main-content">
             <form method="post" action="{% url 'checkboxes' %}">
                 {% csrf_token %}
                 {% for trick in tricks %}
                     <div class="form-check">
                         <label for="trick_{{ trick.id }}">{{ trick.name }}</label>
-                        <select name="trick_{{ trick.id }}">
-                            <option value="Not_Landed" {% if 'Not_Landed' in user_progress|get_key:trick.id %}selected{% endif %}>Not Landed</option>
-                            <option value="Landed_Sketchy" {% if 'Landed_Sketchy' in user_progress|get_key:trick.id %}selected{% endif %}>Landed Sketchy</option>
-                            <option value="Landed_Clean" {% if 'Landed_Clean' in user_progress|get_key:trick.id %}selected{% endif %}>Landed Clean</option>
-                            <option value="On_Lock" {% if 'On_Lock' in user_progress|get_key:trick.id %}selected{% endif %}>On Lock</option>
+                        <select name="trick_{{ trick.id }}" id="trick_{{ trick.id }}">
+                            <option value="Not_Landed"
+                                {% for progress in user_progresses %}
+                                    {% if progress.trick_id == trick.id and progress.selection == 'Not_Landed' %}
+                                        selected
+                                    {% endif %}
+                                {% endfor %}
+                            >Not Landed</option>
+                            <option value="Landed_Sketchy"
+                                {% for progress in user_progresses %}
+                                    {% if progress.trick_id == trick.id and progress.selection == 'Landed_Sketchy' %}
+                                        selected
+                                    {% endif %}
+                                {% endfor %}
+                            >Landed Sketchy</option>
+                            <option value="Landed_Clean"
+                                {% for progress in user_progresses %}
+                                    {% if progress.trick_id == trick.id and progress.selection == 'Landed_Clean' %}
+                                        selected
+                                    {% endif %}
+                                {% endfor %}
+                            >Landed Clean</option>
+                            <option value="On_Lock"
+                                {% for progress in user_progresses %}
+                                    {% if progress.trick_id == trick.id and progress.selection == 'On_Lock' %}
+                                        selected
+                                    {% endif %}
+                                {% endfor %}
+                            >On Lock</option>
                         </select>
+                        <button type="button" onclick="toggleNotes('notes-for-trick-{{ trick.id }}')">Notes</button>
+                        <div id="notes-for-trick-{{ trick.id }}" class="notes-dropdown" style="display: none;">
+                            <textarea name="notes_{{ trick.id }}" id="notes_{{ trick.id }}" maxlength="200" placeholder="Enter up to 200 words">{% for progress in user_progresses %}{% if progress.trick_id == trick.id %}{{ progress.notes|default_if_none:'' }}{% endif %}{% endfor %}</textarea>
+                        </div>
                     </div>
                 {% endfor %}
                 <div class="form-submit">
                     <button type="submit">Update</button>
                 </div>
             </form>
-        </div> <!-- End of main content -->
-    </div> <!-- End of page container -->
-
+        </div>
+    </div>
 </body>
-
 </html>
