@@ -7,17 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trick Tracker - Track Your Tricks</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Font Awesome CDN -->
     <script src="{% static 'js/script.js' %}" defer></script>
 </head>
 <body>
     <div class="page-container">
         <nav>
-            <h1>Trick Tracker</h1>
-            <a href="{% url 'home' %}" class="nav-item">Home</a>
-            <a href="{% url 'about' %}" class="nav-item">About</a>
-            <a href="{% url 'checkboxes' %}" class="nav-item active">Trick Tracker</a>
-            <a href="{% url 'update_profile' %}" class="nav-item">Account</a>
-            <a href="{% url 'logout' %}" class="nav-item">Log out</a>
+            <h1> Trick Tracker</h1>
+            <a href="{% url 'home' %}" class="nav-item"><i class="fas fa-home"></i> Home</a>
+            <a href="{% url 'about' %}" class="nav-item"><i class="fas fa-info-circle"></i> About</a>
+            <a href="{% url 'checkboxes' %}" class="nav-item active"><i class="fas fa-list-ol"></i> Trick Tracker</a>
+            <a href="{% url 'update_profile' %}" class="nav-item"><i class="fas fa-user-circle"></i> Account</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="nav-item"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            {% else %}
+                <a href="{% url 'sign_in' %}" class="nav-item"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+            {% endif %}
         </nav>
 
         <div class="main-content">
@@ -56,14 +61,14 @@
                                 {% endfor %}
                             >On Lock</option>
                         </select>
-                        <button type="button" onclick="toggleNotes('notes-for-trick-{{ trick.id }}')">Notes</button>
+                        <button type="button" onclick="toggleNotes('notes-for-trick-{{ trick.id }}')" class="notes-button"><i class="far fa-sticky-note"></i></button>
                         <div id="notes-for-trick-{{ trick.id }}" class="notes-dropdown" style="display: none;">
                             <textarea name="notes_{{ trick.id }}" id="notes_{{ trick.id }}" maxlength="200" placeholder="Enter up to 200 words">{% for progress in user_progresses %}{% if progress.trick_id == trick.id %}{{ progress.notes|default_if_none:'' }}{% endif %}{% endfor %}</textarea>
                         </div>
                     </div>
                 {% endfor %}
                 <div class="form-submit">
-                    <button type="submit">Update</button>
+                    <button type="submit"><i class="fas fa-save"></i> Update</button>
                 </div>
             </form>
         </div>

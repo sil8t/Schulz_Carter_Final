@@ -127,3 +127,5 @@ STATICFILES_DIRS = [BASE_DIR / "trick_tracker" / "static"]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/trick_tracker/check/'
+
+LOGIN_URL = '/trick_tracker/signin/'
