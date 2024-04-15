@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
 from .models import Trick, UserProgress
-from .forms import CustomUserUpdateForm
+from .forms import CustomUserUpdateForm, SignUpForm
 
 def HOME(request):
     return render(request, "home.html")
@@ -13,6 +14,20 @@ def ABOUT(request):
 
 def sign_in(request):
     return LoginView.as_view()(request)
+
+def sign_up(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')  # Redirect to the home page after successful sign-up
+    else:
+        form = SignUpForm()
+    return render(request, 'sign_up.html', {'form': form})
+
+def skate_dice(request):
+    return render(request, 'skate_dice.html')
 
 @login_required
 def CHECKBOXES(request):

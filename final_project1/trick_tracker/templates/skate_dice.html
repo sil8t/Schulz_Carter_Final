@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
-    <title>Account Updated - Trick Tracker</title>
+    <title>Skate Dice - Trick Tracker</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="{% static 'js/script.js' %}" defer></script>
 </head>
 <body>
@@ -20,20 +20,25 @@
             <a href="{% url 'home' %}" class="nav-item"><i class="fas fa-home"></i> Home</a>
             <a href="{% url 'about' %}" class="nav-item"><i class="fas fa-info-circle"></i> About</a>
             <a href="{% url 'checkboxes' %}" class="nav-item"><i class="fas fa-list-ol"></i> Trick Tracker</a>
-            <a href="{% url 'update_profile' %}" class="nav-item active"><i class="fas fa-user-circle"></i> Account</a>
-            <a href="{% url 'skate_dice' %}" class="nav-item"><i class="fas fa-dice"></i> Skate Dice</a>
+            <a href="{% url 'update_profile' %}" class="nav-item"><i class="fas fa-user-circle"></i> Account</a>
+            <a href="{% url 'skate_dice' %}" class="nav-item active"><i class="fas fa-dice"></i> Skate Dice</a>
             {% if user.is_authenticated %}
                 <a href="{% url 'logout' %}" class="nav-item"><i class="fas fa-sign-out-alt"></i> Log Out</a>
             {% else %}
-                <a href="{% url 'sign_in' %}" class="nav-item"><i the="fas fa-sign-in-alt"></i> Sign In</a>
+                <a href="{% url 'sign_in' %}" class="nav-item"><i class="fas fa-sign-in-alt"></i> Sign In</a>
             {% endif %}
         </nav>
 
         <div class="main-content">
             <div class="about-content">
-                <h2>Account Information Changed</h2>
-                <p>Your information has been successfully updated.</p>
-                <a href="{% url 'home' %}" class="btn">Return to Home</a>
+                <h2>Welcome to Skate Dice!</h2>
+                <p>Roll the dice to get a random skateboarding trick combination. Test your skills and challenge your friends!</p>
+                <div class="rolldice">
+                    <button onclick="rollDice()">Roll Dice</button>
+                </div>
+                <div id="diceResult" class="dice-result">
+                    <!-- Result will appear here after rolling the dice -->
+                </div>
             </div>
         </div>
     </div>

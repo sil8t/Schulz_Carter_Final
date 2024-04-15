@@ -33,7 +33,6 @@ body {
 }
 
 .about-content h2 {
-    color: #007bff; /* A blue tone for headings for better visual hierarchy */
     margin-bottom: 1em; /* Spacing after headings */
 }
 
@@ -167,6 +166,23 @@ select {
 }
 
 .form-submit button:hover {
+    background: #3b5283; /* Darker shade of blue on hover */
+}
+
+
+
+.rolldice button {
+    padding: 10px 20px;
+    border: none;
+    background: #4a69bd; /* Updated color: a stylish blue */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    border-radius: 8px;
+    margin-top: 6em;
+}
+
+.rolldice button:hover {
     background: #3b5283; /* Darker shade of blue on hover */
 }
 
