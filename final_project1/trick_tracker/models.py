@@ -16,7 +16,7 @@ class UserProgress(models.Model):
         ('landed_clean', 'Landed Clean'),
         ('on_lock', 'On Lock'),
     ])
-    notes = models.TextField(max_length=200, blank=True, null=True)  # Add a field for the notes
+    notes = models.TextField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return f"{self.user.username} - {self.trick.name}"

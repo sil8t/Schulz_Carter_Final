@@ -69,10 +69,6 @@ body {
     box-shadow: 0 1px 0 0 currentColor; /* Use box-shadow for underline to avoid shifting text */
 }
 
-
-
-
-
 /* Navigation Bar */
 nav {
     display: flex;
@@ -169,8 +165,6 @@ select {
     background: #3b5283; /* Darker shade of blue on hover */
 }
 
-
-
 .rolldice button {
     padding: 10px 20px;
     border: none;
@@ -185,11 +179,6 @@ select {
 .rolldice button:hover {
     background: #3b5283; /* Darker shade of blue on hover */
 }
-
-
-
-
-
 
 .trick-container {
     position: relative;
@@ -216,16 +205,13 @@ textarea {
     overflow-y: auto; /* Allow vertical scroll inside the textarea */
 }
 
-
-
-
 .notes-button {
     background: none;
     border: none;
-    padding: 5px; /* Add padding to increase the clickable area */
+    padding: 5px;
     margin: 0;
     color: inherit;
-    cursor: pointer; /* Change the cursor to pointer to indicate it's clickable */
+    cursor: pointer;
 }
 
 .notes-button:hover {
@@ -234,14 +220,8 @@ textarea {
 }
 
 .notes-button i {
-    font-size: 18px; /* Make the icon inside the button larger */
+    font-size: 18px;
 }
-
-
-
-
-
-
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -250,7 +230,7 @@ textarea {
     }
 
     nav {
-        width: 100%; /* Nav becomes full width */
+        width: 100%;
         height: auto;
     }
 

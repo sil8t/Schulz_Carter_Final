@@ -5,14 +5,14 @@ from django import forms
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = UserCreationForm.Meta.fields  # Adjust the fields as needed
+        fields = UserCreationForm.Meta.fields 
 
 class CustomUserUpdateForm(UserChangeForm):
     password = None  # Exclude the password field from the form
 
     class Meta:
         model = User
-        fields = ['username', 'email']  # Specify the fields you want to include in the form
+        fields = ['username', 'email']
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
